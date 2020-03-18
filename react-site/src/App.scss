@@ -1,0 +1,23 @@
+.app {
+    background-color: grey;
+}
+
+.app-logo {
+    height: 20vh;
+    user-select:none
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .app-logo {
+        animation: app-logo-spin infinite 2s linear;
+    }
+}
+
+@keyframes app-logo-spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
