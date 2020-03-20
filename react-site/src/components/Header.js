@@ -11,11 +11,22 @@ export default function Header() {
         } else {
             nav.classList.add('hidden')
         }
-    }
+    } 
+    useEffect(() => {
+		const header = document.querySelector('.header')
+        const sticky = header.offsetTop
+        
+		window.addEventListener('scroll', () => {
+			if (window.pageYOffset > sticky + 10) {
+                header.classList.add('sticky')
+			} else {
+                header.classList.remove('sticky')
+            }
+		 })
+	}, [window.pageYOffset])
 
     return (
     <header className="header">
-        <img src={logo} className="logo" alt="logo" />
         <button className='header__burger' onClick={() => handleClick()}>
             Burger
         </button>
@@ -25,6 +36,7 @@ export default function Header() {
             <li><a className="header__link header__priv" href="#">Priv</a></li>
             <li><a className="header__link header__qq" href="#">QQ</a></li>
         </ul>
+        <img src={logo} className="logo" alt="logo" />
     </header>
     )
 }

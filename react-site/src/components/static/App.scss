@@ -5,28 +5,41 @@ $colorTwo: #fff7e3;
 body {
     margin: 0;
     padding: 0;
+    height: 120vh;
 }
 
 .app {
-    background-color: $colorTwo;
     height: 100vh;
+    background-image: url(bg1.jpg);
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    animation: bgc-change infinite 1s linear;
 }
 
 .header {
-    height: 10vh;
+    height: 160px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: darkgrey;
-    position: relative;
+    background: rgba(0, 0, 0, 0);
+    position: sticky;
+    top: 0;
+    transition: background .7s, height .7s;
+
+    &.sticky {
+        background: rgba(0, 0, 0, .8);
+        height: 80px;
+    }
 
     &__burger {
-        margin-right: 5vw;
-        height: 10vh;
-        width: 10vw;
+        margin-left: 10vw;
+        height: 65px;
+        width: 65px;
         border: none;
+        border-radius: 50%;
         background-color: $colorOne;
-        z-index: 1;
+        z-index: 2;
 
         &:hover {
             color: white;
@@ -38,22 +51,22 @@ body {
     }
 
     &__nav {
-        margin: 0 5vw 0 0;
         padding: 0;
-        height: 10vh;
-        width: 10vw;
+        margin: 0;
+        height: 100vh;
+        width: 250px;
         position: absolute;
-        top: 10vh;
-        right: 0;
+        top: 0;
+        left: 0;
         list-style-type: none;
         background-color: $colorOne;
-        z-index: 0;
-        transition: top .5s, visibility .5s;
+        z-index: 1;
+        transition: left .7s, visibility .7s;
 
         &.hidden {
             position: absolute;
             top: 0;
-            right: 0;
+            left: -250px;
             visibility: hidden;
         }
     }
@@ -65,10 +78,12 @@ body {
 }
 
 .logo {
-    height: 10vh;
+    margin-right: 10vw;
+    height: 80px;
     user-select: none;
-    animation: logo-spin infinite 2s linear;
+    animation: logo-spin infinite 2s ease-in;
 }
+
 
 @keyframes logo-spin {
     from {
@@ -76,5 +91,17 @@ body {
     }
     to {
         transform: rotate(360deg);
+    }
+}
+
+@keyframes bgc-change {
+    from {
+        background-image: url(bg12.jpg);
+    } 
+    50% {
+        background-image: url(bg1.jpg);
+    }
+    to {
+        background-image: url(bg12.jpg);
     }
 }
