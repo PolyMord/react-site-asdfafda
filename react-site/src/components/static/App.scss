@@ -1,19 +1,76 @@
+$colorOne: #007aff;
+$colorTwo: #fff7e3;
+
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
 .app {
-    background-color: grey;
+    background-color: $colorTwo;
+    height: 100vh;
 }
 
-.app-logo {
-    height: 20vh;
-    user-select:none
-}
+.header {
+    height: 10vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: darkgrey;
+    position: relative;
 
-@media (prefers-reduced-motion: no-preference) {
-    .app-logo {
-        animation: app-logo-spin infinite 2s linear;
+    &__burger {
+        margin-right: 5vw;
+        height: 10vh;
+        width: 10vw;
+        border: none;
+        background-color: $colorOne;
+        z-index: 1;
+
+        &:hover {
+            color: white;
+        }
+
+        &.hidden {
+            display: none;
+        }
+    }
+
+    &__nav {
+        margin: 0 5vw 0 0;
+        padding: 0;
+        height: 10vh;
+        width: 10vw;
+        position: absolute;
+        top: 10vh;
+        right: 0;
+        list-style-type: none;
+        background-color: $colorOne;
+        z-index: 0;
+        transition: top .5s, visibility .5s;
+
+        &.hidden {
+            position: absolute;
+            top: 0;
+            right: 0;
+            visibility: hidden;
+        }
+    }
+
+    &__link {
+        color: black;
+        text-decoration: none;
     }
 }
 
-@keyframes app-logo-spin {
+.logo {
+    height: 10vh;
+    user-select: none;
+    animation: logo-spin infinite 2s linear;
+}
+
+@keyframes logo-spin {
     from {
         transform: rotate(0deg);
     }
