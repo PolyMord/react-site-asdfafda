@@ -1,11 +1,17 @@
-$colorOne: #007aff;
-$colorTwo: #fff7e3;
+$colorBlue: #cde8fb; // Сине-голубой
+$colorBlueDarker: #79c1f4; // Темнее
+$colorLight: #fff; // Светлее
+
+$colorSalat: #7fff00; // Салатовый
+$colorSalatDarker: #66cc00; // Темнее
+$colorSalatLight: #9fff40; // Светлее
 
 
 body {
     margin: 0;
     padding: 0;
     height: 120vh;
+    overflow-x: hidden;
 }
 
 .app {
@@ -33,52 +39,68 @@ body {
     }
 
     &__burger {
-        margin-left: 10vw;
+        margin-right: 10vw;
         height: 65px;
         width: 65px;
         border: none;
         border-radius: 50%;
-        background-color: $colorOne;
+        background-color: $colorSalat;
         z-index: 2;
+        box-shadow: none;
+        outline: none;
+        transition: background-color .2s;
+        
 
         &:hover {
-            color: white;
+            background-color: $colorSalatLight;
+        } 
+
+        &:active {
+            background-color: $colorSalatDarker;
         }
 
         &.hidden {
             display: none;
         }
     }
+}
 
-    &__nav {
-        padding: 0;
-        margin: 0;
-        height: 100vh;
-        width: 250px;
-        position: absolute;
-        top: 0;
-        left: 0;
-        list-style-type: none;
-        background-color: $colorOne;
-        z-index: 1;
-        transition: left .7s, visibility .7s;
-
-        &.hidden {
-            position: absolute;
-            top: 0;
-            left: -250px;
-            visibility: hidden;
-        }
+.menu {
+    padding: 0;
+    margin: 0;
+    height: 100vh;
+    width: 250px;
+    position: fixed;
+    top: 0;
+    left: -250px;
+    background-color: $colorBlueDarker;
+    z-index: 1;
+    visibility: visible;
+    transition: left .2s, visibility .2s;
+    border-right: thin solid black;
+    
+    &.hidden {
+        visibility: hidden;
     }
 
-    &__link {
-        color: black;
-        text-decoration: none;
+    &__nav {
+        list-style-type: none;
+    }
+
+    &__stub {
+        height: 100vh;
+        width: 100vw;
+        position: absolute;
+        top: 0;
+        left: 250px;
+        bottom: 0;
+        z-index: 1;
+        background-color: black;
     }
 }
 
 .logo {
-    margin-right: 10vw;
+    margin-left: 10vw;
     height: 80px;
     user-select: none;
     animation: logo-spin infinite 2s ease-in;
